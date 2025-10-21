@@ -1,28 +1,29 @@
 package adapter.input;
 
-import java.util.Scanner;
+import application.Ports.Inbound.IValueReader;
 
-public class ConsoleMortgageInput {
+public class  ConsoleMortgageInput {
 
-    private final Scanner scanner;
+    final float DEFAULT_PRINCIPAL = 100_000;
+    final float DEFAULT_ANNUAL_INTEREST_RATE = 3.92F;
+    final short DEFAULT_PERIOD = 30;  // Years
 
-    public ConsoleMortgageInput(Scanner scanner) {
-        this.scanner = scanner;
+    private final IValueReader valueReader;
+
+    public ConsoleMortgageInput(IValueReader valueReader) {
+        this.valueReader = valueReader;
     }
 
     public float getPrincipal() {
-        System.out.print("Enter principal amount: ");
-        return Float.parseFloat(scanner.nextLine());
+        return valueReader.GetFloatValue("Enter principal amount: ", DEFAULT_PRINCIPAL);
     }
 
     public float getAnnualInterestRate() {
-        System.out.print("Enter annual interest rate (%): ");
-        return Float.parseFloat(scanner.nextLine());
+        return valueReader.GetFloatValue("Enter annual interest rate: ", DEFAULT_ANNUAL_INTEREST_RATE);
     }
 
     public short getPeriodYears() {
-        System.out.print("Enter period in years: ");
-        return Short.parseShort(scanner.nextLine());
+        return valueReader.GetShortValue("Enter period in years: ", DEFAULT_PERIOD);
     }
 }
 
