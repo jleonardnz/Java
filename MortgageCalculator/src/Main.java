@@ -22,24 +22,26 @@ import adapter.output.ConsoleMortgageOutput;
 import application.MortgageCalculator;
 import domain.MortgageData;
 
-void main() {
+public class Main {
+    public static void main(String[] args) {
     //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
     // to see how IntelliJ IDEA suggests fixing it.
 
-    IValueReader valueReader = new ConsoleValueReader();
-    // scanner = new Scanner(System.in);
+        IValueReader valueReader = new ConsoleValueReader();
+        // scanner = new Scanner(System.in);
 
-    ConsoleMortgageInput input = new ConsoleMortgageInput(valueReader);
-    ConsoleMortgageOutput output = new ConsoleMortgageOutput();
-    MortgageCalculator calculator = new MortgageCalculator();
+        ConsoleMortgageInput input = new ConsoleMortgageInput(valueReader);
+        ConsoleMortgageOutput output = new ConsoleMortgageOutput();
+        MortgageCalculator calculator = new MortgageCalculator();
 
-    float principal = input.getPrincipal();
-    float rate = input.getAnnualInterestRate();
-    short period = input.getPeriodYears();
+        float principal = input.getPrincipal();
+        float rate = input.getAnnualInterestRate();
+        short period = input.getPeriodYears();
 
-    MortgageData data = new MortgageData(principal, rate, period);
-    float monthlyPayment = calculator.calculateMonthlyPayment(data);
+        MortgageData data = new MortgageData(principal, rate, period);
+        float monthlyPayment = calculator.calculateMonthlyPayment(data);
 
-    output.showValue(monthlyPayment);
-    output.showFormattedValue(String.format("$%.2f", monthlyPayment));
+        output.showFormattedValue(String.format("$%.2f", monthlyPayment));
+    }
 }
+
