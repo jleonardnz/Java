@@ -3,14 +3,16 @@ package application;
 import domain.MortgageData;
 
 public class MortgageCalculator {
+    final byte MONTHS_IN_YEAR = 12;
+    final byte PERCENT = 100;
 
     public float calculateMonthlyPayment(MortgageData data) {
         float principal = data.getPrincipal();
         float annualRate = data.getAnnualInterestRate();
         short years = data.getPeriodYears();
 
-        float monthlyRate = annualRate / 100 / 12;
-        int totalPayments = years * 12;
+        float monthlyRate = annualRate / PERCENT / MONTHS_IN_YEAR;
+        int totalPayments = years * MONTHS_IN_YEAR;
 
         return (float) (
                 principal * monthlyRate /
