@@ -1,6 +1,6 @@
 package adapter.output;
 
-public class ConsoleMortgageOutput {
+public class    ConsoleMortgageOutput {
 
     public void showValue(float value) {
         System.out.println("Monthly payment: " + value);

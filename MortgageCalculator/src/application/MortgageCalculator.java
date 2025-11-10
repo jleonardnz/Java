@@ -11,7 +11,7 @@ public class MortgageCalculator {
         float annualRate = data.getAnnualInterestRate();
         short years = data.getPeriodYears();
 
-        float monthlyRate = annualRate / PERCENT / MONTHS_IN_YEAR;
+        float monthlyRate = annualRate / PERCENT  / MONTHS_IN_YEAR;
         int totalPayments = years * MONTHS_IN_YEAR;
 
         return (float) (
